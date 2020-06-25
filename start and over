@@ -1,0 +1,31 @@
+print_good_game() {
+    local x=$((xcent-4)) y=$((ycent-25))
+    for (( i = 0; i < 8; i++ )); do
+        echo -ne "\033[$((x+i));${y}H\033[45m${good_game[$i]}\033[0m";
+    done
+    echo -ne "\033[$((x+3));$((ycent+1))H\033[45m${sumscore}\033[0m";
+}
+
+print_game_start() {
+    snake_init;
+
+    local x=$((xcent-5)) y=$((ycent-25))
+    for (( i = 0; i < 10; i++ )); do
+        echo -ne "\033[$((x+i));${y}H\033[45m${game_start[$i]}\033[0m";
+    done
+
+    while read -n 1 anykey; do
+        [[ ${anykey:-enter} = enter ]] && break;
+        [[ ${anykey:-enter} = q ]] && snake_exit;
+        [[ ${anykey:-enter} = s ]] && ch_speed;
+    done
+    
+    while true; do
+        new_game;
+        print_good_game;
+        while read -n 1 anykey; do
+            [[ $anykey = n ]] && break;
+            [[ $anykey = q ]] && snake_exit;
+        done
+    done
+}
