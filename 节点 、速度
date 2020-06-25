@@ -1,0 +1,19 @@
+# $1 节点位置 
+update() {                                    #更新各个节点坐标
+    case ${pos[$1]} in
+        right) ((ypt[$1]++));;
+         left) ((ypt[$1]--));;
+         down) ((xpt[$1]++));;
+           up) ((xpt[$1]--));;
+    esac
+}
+
+ch_speed() {                                  #更新速度
+     [[ $# -eq 0 ]] && spk=$(((spk+1)%3));
+     case $spk in
+         0) temp="Fast  ";;
+         1) temp="Medium";;
+         2) temp="Slow  ";;
+     esac
+     echo -ne "\033[$Lines;3H\033[33mSpeed: $temp\033[0m";
+}
