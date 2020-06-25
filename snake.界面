@@ -1,0 +1,22 @@
+good_game=(
+    '                                                 '
+    '                G A M E  O V E R !               '
+    '                                                 '
+    '                   Score:                        '
+    '          press   q   to quit                    '
+    '          press   n   to start a new game        '
+    '          press   s   to change the speed        '
+    '                                                 '
+);
+
+game_start=(
+    '                                                 '
+    '                ~~~ S N A K E ~~~                '
+    '                                                 '
+    '         space or enter   pause/play             '
+    '         q                quit at any time       '
+    '         s                change the speed       '
+    '                                                 '
+    '         Press <Enter> to start the game         '
+    '                                                 '
+);
