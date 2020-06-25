@@ -1,0 +1,11 @@
+Gooooo() {                                   #更新方向
+    case ${key:-enter} in
+        j|J) [[ ${pos[0]} != "up"    ]] && pos[0]="down";;
+        u|U) [[ ${pos[0]} != "down"  ]] && pos[0]="up";;
+        h|H) [[ ${pos[0]} != "right" ]] && pos[0]="left";;
+        k|K) [[ ${pos[0]} != "left"  ]] && pos[0]="right";;
+        s|S) ch_speed;;
+        q|Q) snake_exit;;
+      enter) game_pause;;
+    esac
+}
