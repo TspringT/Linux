@@ -1,0 +1,17 @@
+add_node() {                                 #增加节点
+    snake="0$snake";
+    pos=(${pos[0]} ${pos[@]});
+    xpt=(${xpt[0]} ${xpt[@]});
+    ypt=(${ypt[0]} ${ypt[@]});
+    update 0;
+
+    local x=${xpt[0]} y=${ypt[0]}
+    (( ((x>=$((Lines-1)))) || ((x<=1)) || ((y>=Cols)) || ((y<=1)) )) && return 1; #撞墙
+
+    for (( i = $((${#snake}-1)); i > 0; i-- )); do
+        (( ${xpt[0]} == ${xpt[$i]} && ${ypt[0]} == ${ypt[$i]} )) && return 1; #crashed
+    done
+
+    echo -ne "\033[${xpt[0]};${ypt[0]}H\033[32m${snake[@]:0:1}\033[0m";
+    return 0;
+}
